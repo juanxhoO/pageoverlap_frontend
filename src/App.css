@@ -28,11 +28,65 @@
   color: #61dafb;
 }
 
+
+.overlay .ImageContainer {
+  width: 100%;
+}
+
+.overlayButton {
+  margin-top: 40px !important;
+}
+
+
+.ImageContainer img.offscreen{
+  display: none;
+}
+
+.ImageContainer {
+  width: 50%;
+  min-height: 320px;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  border: 1px solid #f1f3f4;
+  justify-content: center;
+}
+
+.mainContainer{
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+.overlay .ImageContainer img {
+  opacity: .6;
+}
+.overlay .ImageContainer{
+  position: absolute;
+}
+
+.ImageContainer img.showimg {
+  display: block;
+  max-width: 100%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.url_error.show {
+  display: block;
+}
+
+.url_error {
+  color: red;
+  font-weight: bold;
+  display: none;
 }
