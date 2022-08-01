@@ -28,7 +28,6 @@
   color: #61dafb;
 }
 
-
 .overlay .ImageContainer {
   width: 100%;
 }
@@ -37,9 +36,26 @@
   margin-top: 40px !important;
 }
 
-
-.ImageContainer img.offscreen{
+.ImageContainer .offscreen {
   display: none;
+}
+
+.App.overlay .mainContainer {
+  min-height: 800px;
+}
+
+.App.overlay .ImageContainer form{
+  display: none;
+}
+
+
+.ImageContainer form {
+  position: relative;
+}
+
+
+.actionButtonsContainer button{
+  margin: 20px 10px;
 }
 
 .ImageContainer {
@@ -48,21 +64,30 @@
   text-align: center;
   vertical-align: middle;
   display: flex;
+  position: relative;
   box-sizing: border-box;
   align-items: center;
   border: 1px solid #f1f3f4;
   justify-content: center;
 }
 
-.mainContainer{
+.mainContainer {
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
 .overlay .ImageContainer img {
-  opacity: .6;
+  opacity: .5;
 }
-.overlay .ImageContainer{
+
+.overlay .ImageContainer {
+  position: absolute;
+}
+.overlay .ImageContainer .cancelimg {
+  display: none;
+}
+
+.overlay .ImageContainer {
   position: absolute;
 }
 
@@ -89,4 +114,14 @@
   color: red;
   font-weight: bold;
   display: none;
+}
+
+
+.cancelimg{
+  position: absolute;
+    top: 5px;
+    font-weight: bold;
+    right: 5px;
+    text-decoration: none;
+    cursor: pointer;
 }
