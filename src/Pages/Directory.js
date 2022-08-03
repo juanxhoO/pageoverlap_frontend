@@ -10,11 +10,7 @@ const Directory = () => {
 
     return (
         <div className="Maincontainer">
-
         <FolderWidget></FolderWidget>
-
-
-
         </div>
     );
 }
