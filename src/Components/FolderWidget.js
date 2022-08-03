@@ -18,9 +18,8 @@ const FolderWidget = (props) => {
     useEffect(() => {
         axios.get('http://localhost:3080/api/directory')
             .then(function (response) {
-                console.log(response.data);
                 setApiResponse(response.data);
-                console.log(apiResponse)
+                //console.log(apiResponse)
             })
             .catch(function (error) {
                 console.log(error);
@@ -28,7 +27,8 @@ const FolderWidget = (props) => {
             .then(function () {
                 // always executed
             });
-    }, []);
+    },[]);
+
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
@@ -38,8 +38,7 @@ const FolderWidget = (props) => {
         axios.get(url)
             .then(function (response) {
                 setDirectoryData(response.data);
-
-                console.log(directoryData);
+                console.log(directoryData)
                 setInputList(<Subdirectory data={directoryData} key={inputList.length} />);
             })
             .catch(function (error) {

@@ -6,10 +6,12 @@ import ListItemText from '@mui/material/ListItemText';
 
 const Subdirectory = (props) => {
     const [data, setData] = useState([]);
+    
+    
     useEffect(() => {
         console.log(props.data)
         setData(props.data);
-    }, [])
+    }, [data])
 
     return (
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
