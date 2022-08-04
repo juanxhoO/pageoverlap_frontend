@@ -19,7 +19,6 @@ const FolderWidget = (props) => {
         axios.get('http://localhost:3080/api/directory')
             .then(function (response) {
                 setApiResponse(response.data);
-                //console.log(apiResponse)
             })
             .catch(function (error) {
                 console.log(error);
@@ -29,17 +28,16 @@ const FolderWidget = (props) => {
             });
     },[]);
 
-
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
-
+        
         let key = event.currentTarget.id
-        const url = 'http://localhost:3080/api/directory/' + key;
+        let url = 'http://localhost:3080/api/directory/' + key;
+        
         axios.get(url)
             .then(function (response) {
-                setDirectoryData(response.data);
-                console.log(directoryData)
-                setInputList(<Subdirectory data={directoryData} key={inputList.length} />);
+//                console.log(response.data);
+                setInputList(<Subdirectory data={response.data} key={inputList.length} />);
             })
             .catch(function (error) {
                 console.log(error);

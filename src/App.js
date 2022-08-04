@@ -7,7 +7,7 @@ import { Link, Routes, Route } from "react-router-dom";
 
 import Directory from './Pages/Directory.js'
 import Homepage from './Pages/Homepage';
-import ScreenshotPage from './Pages/ScreenshotPage';
+import ScreenshotsPage from './Pages/ScreenshotsPage';
 function App() {
 
   useEffect(() => {
@@ -28,12 +28,10 @@ function App() {
 
       <Routes>
 
-
       <Route
-          path="/directory/screenshot/:id"
-          element={<ScreenshotPage />}
+          path="/directory/screenshots/:pathname"
+          element={<ScreenshotsPage />}
         />
-
 
       <Route
           path="/"
@@ -41,7 +39,7 @@ function App() {
         />
 
         <Route
-          path="directory"
+          path="/directory"
           element={<Directory />}
         />
 

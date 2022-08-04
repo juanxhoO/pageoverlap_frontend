@@ -3,26 +3,34 @@ import { Button, List, Box } from '@mui/material';
 import React from 'react';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import { useNavigate } from "react-router-dom";
 
 const Subdirectory = (props) => {
-    const [data, setData] = useState([]);
-    
-    
-    useEffect(() => {
-        console.log(props.data)
-        setData(props.data);
-    }, [data])
+    let navigate = useNavigate();
+
+    const handleClickDirectory = (event) => {
+        let pathname = event.currentTarget.getAttribute('pathname');
+
+        console.log(pathname);
+
+        localStorage.setItem("pathname", pathname);
+        navigate("/directory/screenshots");
+
+
+        
+    }
 
     return (
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             <List>
-                {data.map((data) => {
+                {props.data.map((data) => {
                     return (
                         <ListItemButton
-                            id={data.hostname}
+                            onClick={handleClickDirectory}
+                            pathname={data.pathname}
                             key={data._id}
                         >
-                            <ListItemText primary={data.url} />
+                            <ListItemText primary={data.pathname} />
                         </ListItemButton>
                     )
                 })}
