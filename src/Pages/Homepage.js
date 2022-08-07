@@ -2,16 +2,21 @@ import ImageComponent from '../Components/imageComponent';
 import { useEffect } from 'react';
 import Button from '@mui/material/Button';
 import React from 'react';
-import { Link, Routes, Route } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
+
+
+
 function Homepage() {
 
-    useEffect(() => {
-
-    });
+    const usenavigate = useNavigate();
     const overlayImages = (e) => {
         document.querySelector('.App').classList.add("overlay")
     }
     
+    const handleDirectory = () => {
+        usenavigate('/directory')
+    }
     const restoreImages = (e) => {
         //e.target.className 
         //this.classList.add("sdssdsd");
@@ -30,9 +35,9 @@ function Homepage() {
             <div className='actionButtonsContainer'>
                 <Button className="overlayBtn" onClick={overlayImages} variant="contained">Overlap Images</Button>
                 <Button className="unoverlayBtn" onClick={restoreImages} variant="contained">Restore</Button>
-                <Link to="directory">
+                <Button onClick={() => handleDirectory()}  variant="contained">
                     Search by Directory
-                </Link>
+                </Button>
             </div>
         </div>
     );

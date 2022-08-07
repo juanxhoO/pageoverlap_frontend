@@ -3,31 +3,41 @@ import axios from 'axios';
 import React from 'react';
 
 const ScreenshotsPage = () => {
-    const [apiResponse,setApiResponse] = useState([])
+    const [apiResponse, setApiResponse] = useState([])
+    
+    
+    const pathname = localStorage.getItem('pathname');
+    const hostname = localStorage.getItem('hostname');
+
     useEffect(() => {
-        const pathname = localStorage.getItem('pathname');
-        axios.get("http://localhost:3080/api/directory/thumbnails")
-            .then(function (response) {
-                
-                console.log(response.data);
-            })
+        
+        axios.get("http://localhost:3080/api/thumbnails", {
+            params: {
+                hostname: hostname,
+                pathname: pathname
+            }
+        }).then(function (response) {
+            console.log(response.data);
+            setApiResponse(response.data);
+        })
             .catch(function (error) {
                 console.log(error);
             })
             .then(function () {
                 // always executed
             });
-    });
+    }, []);
 
     return (
         <div className="Maincontainer">
             {apiResponse.map((data) => {
-                        return (
-                             <div>
-                                <img src="" />
-                             </div>
-                        )
-                    })}
+                let image_src = "http://localhost:3080/images/" + hostname  + "/thumbnails/" + data.title + ".jpg" ;
+                return (
+                    <div>
+                        <img src={image_src} />
+                    </div>
+                )
+            })}
 
         </div>
     );

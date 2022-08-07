@@ -8,16 +8,13 @@ import { useNavigate } from "react-router-dom";
 const Subdirectory = (props) => {
     let navigate = useNavigate();
 
+
     const handleClickDirectory = (event) => {
         let pathname = event.currentTarget.getAttribute('pathname');
-
-        console.log(pathname);
-
+        let hostname = event.currentTarget.getAttribute('hostname');
         localStorage.setItem("pathname", pathname);
+        localStorage.setItem("hostname", hostname);
         navigate("/directory/screenshots");
-
-
-        
     }
 
     return (
@@ -28,6 +25,7 @@ const Subdirectory = (props) => {
                         <ListItemButton
                             onClick={handleClickDirectory}
                             pathname={data.pathname}
+                            hostname={data.hostname}
                             key={data._id}
                         >
                             <ListItemText primary={data.pathname} />

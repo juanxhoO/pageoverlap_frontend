@@ -4,36 +4,32 @@ import { useEffect } from 'react';
 import Button from '@mui/material/Button';
 import React from 'react';
 import { Link, Routes, Route } from "react-router-dom";
-
+import Sidebar from './Components/Sidebar';
 import Directory from './Pages/Directory.js'
 import Homepage from './Pages/Homepage';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 import ScreenshotsPage from './Pages/ScreenshotsPage';
+
 function App() {
+  let homepage = window.location.pathname;
 
-  useEffect(() => {
-
-  });
-  const overlayImages = (e) => {
-    document.querySelector('.App').classList.add("overlay")
-  }
-
-  const restoreImages = (e) => {
-    //e.target.className 
-    //this.classList.add("sdssdsd");
-    console.log('click');
-    document.querySelector('.App').classList.remove("overlay")
-  }
   return (
     <div className="App">
 
+      <Header />
+      
+        <Sidebar />
+
+      
       <Routes>
 
-      <Route
-          path="/directory/screenshots/:pathname"
+        <Route
+          path="/directory/screenshots"
           element={<ScreenshotsPage />}
         />
 
-      <Route
+        <Route
           path="/"
           element={<Homepage />}
         />
@@ -44,6 +40,7 @@ function App() {
         />
 
       </Routes>
+      <Footer />
 
     </div>
   );

@@ -13,6 +13,7 @@ const ImageComponent = () => {
     const [validUrl, setValidUrl] = useState(false);
     const [showImg, setShowImg] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [screenType, setScreenType] = useState('');
 
     const cLoseStyleButton = {
         position: 'absolute',
@@ -56,7 +57,8 @@ const ImageComponent = () => {
             }
 
             axios.post('http://localhost:3080/api/abovefold', {
-                url: url
+                url: url,
+                type: screenType
             })
                 .then(function (response) {
                     console.log(response.data);
@@ -77,11 +79,13 @@ const ImageComponent = () => {
 
     }
 
+    const handleImageHeight = (type) => {
+        setScreenType(type)
+        console.log(type);
+    }
     const handleChange = (event) => {
         setUrl(event.target.value);
     }
-
-
 
     const removeImg = () => {
         console.log("dsd")
@@ -109,6 +113,16 @@ const ImageComponent = () => {
                         }}
                     />
                 )}
+
+                <div className='buttonsContainer'>
+                    <Button color={screenType == "belowfold" ? "success" : "primary"} variant="contained" onClick={() => handleImageHeight('belowfold')}>BelowFold</Button>
+                    <Button color={screenType == "abovefold" ? "success" : "primary"} variant="contained" onClick={() => handleImageHeight('abovefold')}>Abovefold</Button>
+                    <Button color={screenType == "fullscreen" ? "success" : "primary"} variant="contained" onClick={() => handleImageHeight('fullscreen')}>Fullscreen</Button>
+
+                </div>
+
+
+
             </form>
         </div>
     );

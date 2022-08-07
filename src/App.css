@@ -44,7 +44,7 @@
   min-height: 800px;
 }
 
-.App.overlay .ImageContainer form{
+.App.overlay .ImageContainer form {
   display: none;
 }
 
@@ -54,7 +54,7 @@
 }
 
 
-.actionButtonsContainer button{
+.actionButtonsContainer button {
   margin: 20px 10px;
 }
 
@@ -83,6 +83,7 @@
 .overlay .ImageContainer {
   position: absolute;
 }
+
 .overlay .ImageContainer .cancelimg {
   display: none;
 }
@@ -117,11 +118,16 @@
 }
 
 
-.cancelimg{
+.buttonsContainer {
+  display: block;
+  margin-top: 30px;
+}
+
+.cancelimg {
   position: absolute;
-    top: 5px;
-    font-weight: bold;
-    right: 5px;
-    text-decoration: none;
-    cursor: pointer;
+  top: 5px;
+  font-weight: bold;
+  right: 5px;
+  text-decoration: none;
+  cursor: pointer;
 }

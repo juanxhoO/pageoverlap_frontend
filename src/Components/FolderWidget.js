@@ -26,17 +26,17 @@ const FolderWidget = (props) => {
             .then(function () {
                 // always executed
             });
-    },[]);
+    }, []);
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
-        
+
         let key = event.currentTarget.id
         let url = 'http://localhost:3080/api/directory/' + key;
-        
+
         axios.get(url)
             .then(function (response) {
-//                console.log(response.data);
+                //                console.log(response.data);
                 setInputList(<Subdirectory data={response.data} key={inputList.length} />);
             })
             .catch(function (error) {
