@@ -131,3 +131,10 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.ThumbContainer {
+  max-height: 240px;
+  overflow: hidden;
+  display: inline-block;
+  width: 25%;
+}

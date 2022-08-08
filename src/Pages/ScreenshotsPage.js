@@ -4,13 +4,13 @@ import React from 'react';
 
 const ScreenshotsPage = () => {
     const [apiResponse, setApiResponse] = useState([])
-    
-    
+
+
     const pathname = localStorage.getItem('pathname');
     const hostname = localStorage.getItem('hostname');
 
     useEffect(() => {
-        
+
         axios.get("http://localhost:3080/api/thumbnails", {
             params: {
                 hostname: hostname,
@@ -31,9 +31,9 @@ const ScreenshotsPage = () => {
     return (
         <div className="Maincontainer">
             {apiResponse.map((data) => {
-                let image_src = "http://localhost:3080/images/" + hostname  + "/thumbnails/" + data.title + ".jpg" ;
+                let image_src = "http://localhost:3080/images/" + hostname + "/thumbnails/" + data.title + ".jpg";
                 return (
-                    <div>
+                    <div className='ThumbContainer'>
                         <img src={image_src} />
                     </div>
                 )

@@ -8,12 +8,20 @@ import React from 'react';
 
 const ImageComponent = () => {
 
+
     const [url, setUrl] = useState('');
     const [apiresponse, setApiResponse] = useState('');
     const [validUrl, setValidUrl] = useState(false);
     const [showImg, setShowImg] = useState(false);
     const [loading, setLoading] = useState(false);
     const [screenType, setScreenType] = useState('');
+
+
+    const styledButn = {
+        "margin": "0 5px"
+    }
+    
+    
 
     const cLoseStyleButton = {
         position: 'absolute',
@@ -115,9 +123,9 @@ const ImageComponent = () => {
                 )}
 
                 <div className='buttonsContainer'>
-                    <Button color={screenType == "belowfold" ? "success" : "primary"} variant="contained" onClick={() => handleImageHeight('belowfold')}>BelowFold</Button>
-                    <Button color={screenType == "abovefold" ? "success" : "primary"} variant="contained" onClick={() => handleImageHeight('abovefold')}>Abovefold</Button>
-                    <Button color={screenType == "fullscreen" ? "success" : "primary"} variant="contained" onClick={() => handleImageHeight('fullscreen')}>Fullscreen</Button>
+                    <Button style={styledButn} color={screenType == "belowfold" ? "success" : "primary"} variant="contained" onClick={() => handleImageHeight('belowfold')}>BelowFold</Button>
+                    <Button style={styledButn} color={screenType == "abovefold" ? "success" : "primary"} variant="contained" onClick={() => handleImageHeight('abovefold')}>Abovefold</Button>
+                    <Button style={styledButn} color={screenType == "fullscreen" ? "success" : "primary"} variant="contained" onClick={() => handleImageHeight('fullscreen')}>Fullscreen</Button>
 
                 </div>
 
