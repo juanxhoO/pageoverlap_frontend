@@ -15,22 +15,13 @@ const ImageComponent = () => {
     const [showImg, setShowImg] = useState(false);
     const [loading, setLoading] = useState(false);
     const [screenType, setScreenType] = useState('');
-
-
     const styledButn = {
         "margin": "0 5px"
     }
-    
-    
-
-    const cLoseStyleButton = {
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        marginRight: 0
-    };
 
     useEffect(() => {
+
+        
         setValidUrl(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n\?\=]+)/i.test(url));
         console.log(validUrl);
 
@@ -64,7 +55,7 @@ const ImageComponent = () => {
                 setLoading(true);
             }
 
-            axios.post('http://localhost:3080/api/abovefold', {
+            axios.post('http://localhost:3080/api/pageshot', {
                 url: url,
                 type: screenType
             })

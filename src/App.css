@@ -40,8 +40,8 @@
   display: none;
 }
 
-.App.overlay .mainContainer {
-  min-height: 800px;
+.App.overlay .Maincontainer {
+  min-height: 890px;
 }
 
 .App.overlay .ImageContainer form {
@@ -53,6 +53,14 @@
   position: relative;
 }
 
+
+
+.App.overlay .actionButtonsContainer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 .actionButtonsContainer button {
   margin: 20px 10px;
@@ -71,9 +79,20 @@
   justify-content: center;
 }
 
-.mainContainer {
+
+.ImgComponentContainer {
   display: flex;
   flex-wrap: wrap;
+}
+
+.Maincontainer {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
 }
 
 .overlay .ImageContainer img {
@@ -82,6 +101,8 @@
 
 .overlay .ImageContainer {
   position: absolute;
+  top: 0;
+  left: 0
 }
 
 .overlay .ImageContainer .cancelimg {
@@ -134,7 +155,31 @@
 
 .ThumbContainer {
   max-height: 240px;
-  overflow: hidden;
   display: inline-block;
+  border: 1px solid #ccc;
   width: 25%;
+}
+
+.Sidebar {
+  width: 300px;
+  min-height: 78vh;
+  float: left;
+  border-right: 1px solid gainsboro;
+  padding: 20px 0;
+  position: relative;
+}
+
+
+.ThumbContainer img{
+  width: auto;
+    max-height: 240px;
+}
+
+.ScreenshotContainer img{
+  max-width: 100%;
+}
+
+
+.ActionsCOntainer{
+  
 }

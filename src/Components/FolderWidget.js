@@ -13,7 +13,6 @@ const FolderWidget = (props) => {
     const [apiResponse, setApiResponse] = useState([]);
     const [selectedIndex, setSelectedIndex] = React.useState(1);
     const [inputList, setInputList] = useState([]);
-    const [directoryData, setDirectoryData] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost:3080/api/directory')
@@ -48,9 +47,8 @@ const FolderWidget = (props) => {
     };
 
     return (
-        <div className="Maincontainer">
+        <div>
             <Searchbar></Searchbar>
-
 
             <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                 <List component="nav" aria-label="main folders">

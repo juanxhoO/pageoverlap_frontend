@@ -30,7 +30,7 @@ const Searchbar = () => {
         }];
 
     return (
-        <div className="Maincontainer">
+        <div>
             <Stack spacing={2} sx={{ width: 300 }}>
                 <Autocomplete
                     freeSolo
@@ -48,7 +48,7 @@ const Searchbar = () => {
                         />
                     )}
                 />
-                <Button>Search</Button>
+                <Button variant="contained" >Search</Button>
             </Stack>
 
         </div>

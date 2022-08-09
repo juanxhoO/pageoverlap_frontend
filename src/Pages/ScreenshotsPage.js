@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ScreenshotsPage = () => {
     const [apiResponse, setApiResponse] = useState([])
 
-
+    const navigate = useNavigate();
     const pathname = localStorage.getItem('pathname');
     const hostname = localStorage.getItem('hostname');
 
     useEffect(() => {
-
         axios.get("http://localhost:3080/api/thumbnails", {
             params: {
                 hostname: hostname,
@@ -26,15 +26,39 @@ const ScreenshotsPage = () => {
             .then(function () {
                 // always executed
             });
-    }, []);
+    }, [localStorage.getItem('pathname')]);
+
+
+    const handleThumbnail = (event) => {
+        console.log(event.currentTarget.id);
+
+        let screenshot_id = event.currentTarget.id;
+        localStorage.setItem("screenshot_id", screenshot_id);
+        navigate("/directory/screenshots/" + screenshot_id);
+    }
 
     return (
         <div className="Maincontainer">
             {apiResponse.map((data) => {
                 let image_src = "http://localhost:3080/images/" + hostname + "/thumbnails/" + data.title + ".jpg";
                 return (
-                    <div className='ThumbContainer'>
+                    <div key={data._id} id={data._id} onClick={handleThumbnail} className='ThumbContainer'>
+
                         <img src={image_src} />
+
+                        <span>
+
+                            <span>
+                                {data.Screentype}
+                            </span>
+
+                            <span>
+                                {data.dimensions[0]}x
+                                {data.dimensions[1]}
+                            </span>
+
+                        </span>
+
                     </div>
                 )
             })}

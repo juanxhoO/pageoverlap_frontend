@@ -1,5 +1,4 @@
 import ImageComponent from '../Components/imageComponent';
-import { useEffect } from 'react';
 import Button from '@mui/material/Button';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -26,7 +25,7 @@ function Homepage() {
     return (
         <div className="Maincontainer">
 
-            <div className='mainContainer'>
+            <div className="ImgComponentContainer">
                 <ImageComponent onClick={overlayImages}></ImageComponent>
                 <ImageComponent onClick={overlayImages}></ImageComponent>
                 <ImageComponent onClick={overlayImages}></ImageComponent>
