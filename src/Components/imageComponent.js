@@ -5,9 +5,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Button } from '@mui/material';
 import React from 'react';
 
-
 const ImageComponent = () => {
 
+    const api_url = process.env.REACT_APP_AXIOS_BASE_URL;
 
     const [url, setUrl] = useState('');
     const [apiresponse, setApiResponse] = useState('');
@@ -19,12 +19,9 @@ const ImageComponent = () => {
         "margin": "0 5px"
     }
 
-    useEffect(() => {
-
-        
+    useEffect(() => {        
         setValidUrl(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n\?\=]+)/i.test(url));
         console.log(validUrl);
-
     }, [url])
 
     function handleUrl(url) {
@@ -55,13 +52,13 @@ const ImageComponent = () => {
                 setLoading(true);
             }
 
-            axios.post('http://localhost:3080/api/pageshot', {
+            axios.post(api_url + '/api/pageshot', {
                 url: url,
                 type: screenType
             })
                 .then(function (response) {
-                    console.log(response.data);
                     setApiResponse(response.data);
+                    localStorage.setItem("imagehandle",response.data)
                     setShowImg(true);
                     setLoading(false);
 
@@ -80,7 +77,6 @@ const ImageComponent = () => {
 
     const handleImageHeight = (type) => {
         setScreenType(type)
-        console.log(type);
     }
     const handleChange = (event) => {
         setUrl(event.target.value);
@@ -94,7 +90,7 @@ const ImageComponent = () => {
     return (
         <div className="ImageContainer">
             <span onClick={removeImg} className={showImg ? "showimg cancelimg" : "offscreen"} >X</span>
-            <img className={showImg ? "showimg" : "offscreen"} src={"http://localhost:3080" + apiresponse}>
+            <img className={showImg ? "showimg" : "offscreen"} src={api_url + apiresponse}>
             </img>
             <form className={!showImg ? "showimg" : "offscreen"} onSubmit={getScreenshot}>
                 <TextField type="text" onChange={handleChange} placeholder='place url:' />

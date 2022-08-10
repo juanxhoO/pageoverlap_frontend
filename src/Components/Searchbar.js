@@ -1,7 +1,6 @@
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useState, useEffect } from 'react';
 import React from 'react';
 import { Button } from '@mui/material';
 const Searchbar = () => {

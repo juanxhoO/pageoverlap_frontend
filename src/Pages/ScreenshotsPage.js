@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom';
 
 const ScreenshotsPage = () => {
     const [apiResponse, setApiResponse] = useState([])
+    const api_url = process.env.REACT_APP_AXIOS_BASE_URL;
 
     const navigate = useNavigate();
     const pathname = localStorage.getItem('pathname');
     const hostname = localStorage.getItem('hostname');
 
     useEffect(() => {
-        axios.get("http://localhost:3080/api/thumbnails", {
+        axios.get(api_url + "/api/thumbnails", {
             params: {
                 hostname: hostname,
                 pathname: pathname
@@ -40,7 +41,7 @@ const ScreenshotsPage = () => {
     return (
         <div className="Maincontainer">
             {apiResponse.map((data) => {
-                let image_src = "http://localhost:3080/images/" + hostname + "/thumbnails/" + data.title + ".jpg";
+                let image_src = api_url + "/images/" + hostname + "/thumbnails/" + data.title + ".jpg";
                 return (
                     <div key={data._id} id={data._id} onClick={handleThumbnail} className='ThumbContainer'>
 

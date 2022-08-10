@@ -17,7 +17,6 @@ function App() {
       <Header />
       
         <Sidebar />
-        <p>{process.env.REACT_APP_AXIOS_BASE_URL}</p>
       
       <Routes>
 
