@@ -9,29 +9,28 @@ import Subdirectory from './Subdirectory';
 import { useEffect, useState } from 'react';
 
 const FolderWidget = (props) => {
-
+    const api_url = process.env.REACT_APP_AXIOS_BASE_URL;
     const [apiResponse, setApiResponse] = useState([]);
     const [selectedIndex, setSelectedIndex] = React.useState(1);
     const [inputList, setInputList] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3080/api/directory')
+        axios.get(api_url + '/api/directory')
             .then(function (response) {
+                console.log("dsdsd")
                 setApiResponse(response.data);
             })
             .catch(function (error) {
                 console.log(error);
             })
-            .then(function () {
-                // always executed
-            });
-    }, []);
+  
+    }, [localStorage.getItem('imagehandle')]);
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
 
         let key = event.currentTarget.id
-        let url = 'http://localhost:3080/api/directory/' + key;
+        let url = api_url + '/api/directory/' + key;
 
         axios.get(url)
             .then(function (response) {
@@ -41,14 +40,11 @@ const FolderWidget = (props) => {
             .catch(function (error) {
                 console.log(error);
             })
-            .then(function () {
-                // always executed
-            });
     };
 
     return (
         <div>
-            <Searchbar></Searchbar>
+            <Searchbar/>
 
             <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                 <List component="nav" aria-label="main folders">

@@ -5,14 +5,21 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 
+
+const ButtonStyles = {
+    "margin": "20px 5px"
+}
+
 const Screenshot = (props) => {
 
+    const api_url = process.env.REACT_APP_AXIOS_BASE_URL;
 
     const navigate = useNavigate();
     const [apiResponse, setApiResponse] = useState([])
     let screenshotId = useParams();
+    console.log(screenshotId)
     useEffect(() => {
-        axios.get("http://localhost:3080/api/screenshots/" + screenshotId.id).then(function (response) {
+        axios.get(api_url + "/api/screenshots/" + screenshotId.id).then(function (response) {
             console.log(response.data);
             setApiResponse(response.data);
         })
@@ -26,7 +33,7 @@ const Screenshot = (props) => {
 
 
     const deleteScreenshot = () => {
-        axios.delete("http://localhost:3080/api/screenshots/" + screenshotId.id).then(function (response) {
+        axios.delete(api_url + "/api/screenshots/" + screenshotId.id).then(function (response) {
             console.log(response.data);
             navigate('/');
         })
@@ -38,7 +45,7 @@ const Screenshot = (props) => {
             });
     }
 
-    const image_src = "http://localhost:3080/images/" + apiResponse.hostname + "/" + apiResponse.title + ".jpg"
+    const image_src = api_url + "/images/" + apiResponse.hostname + "/" + apiResponse.title + ".jpg"
     return (
         <div className="Maincontainer">
 
@@ -46,12 +53,12 @@ const Screenshot = (props) => {
             <div className='ScreenshotContainer'>
                 <img src={image_src} />
 
-                <div className='ActionsCOntainer'>
+                <div className='ActionsContainer'>
 
+                    <Button style={ButtonStyles} variant="contained">Use Image</Button>
+                    <Button style={ButtonStyles} onClick={deleteScreenshot} variant="contained" color="error">Delete</Button>
                 </div>
 
-                <Button variant="contained">Use Image</Button>
-                <Button onClick={deleteScreenshot} variant="contained" color="error">Delete</Button>
             </div>
 
         </div>
