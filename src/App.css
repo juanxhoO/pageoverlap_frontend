@@ -154,7 +154,7 @@
 }
 
 .ThumbContainer {
-  max-height: 300px;
+  max-height: 380px;
   display: inline-block;
   border: 1px solid #ccc;
   flex: 0 25%;
@@ -188,9 +188,12 @@
 }
 
 .ThumbnailContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+
 }
 
 .ThumbContainer span {
@@ -205,4 +208,9 @@
 .thumbDetails
 {
   display: block;
+}
+
+
+.ThumbContainer:hover{
+  opacity: .5;
 }
