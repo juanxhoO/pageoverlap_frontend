@@ -14,12 +14,12 @@ const ImageComponent = () => {
     const [validUrl, setValidUrl] = useState(false);
     const [showImg, setShowImg] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [screenType, setScreenType] = useState('');
+    const [screenType, setScreenType] = useState('abovefold');
     const styledButn = {
         "margin": "0 5px"
     }
 
-    useEffect(() => {        
+    useEffect(() => {
         setValidUrl(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n\?\=]+)/i.test(url));
         console.log(validUrl);
     }, [url])
@@ -42,12 +42,9 @@ const ImageComponent = () => {
         }
 
     }
-
     const getScreenshot = (event) => {
         event.preventDefault();
-
         if (handleUrl(url)) {
-
             if (!loading) {
                 setLoading(true);
             }
@@ -58,7 +55,7 @@ const ImageComponent = () => {
             })
                 .then(function (response) {
                     setApiResponse(response.data);
-                    localStorage.setItem("imagehandle",response.data)
+                    localStorage.setItem("imagehandle", response.data)
                     setShowImg(true);
                     setLoading(false);
 
@@ -66,25 +63,18 @@ const ImageComponent = () => {
                 .catch(function (error) {
                     console.log(error);
                 })
-                .then(function () {
-                    // always executed
-                });
         } else {
-            alert(url);
+            alert("url is wrong formatted");
         }
 
     }
-
     const handleImageHeight = (type) => {
         setScreenType(type)
     }
     const handleChange = (event) => {
         setUrl(event.target.value);
     }
-
     const removeImg = () => {
-        console.log("dsd")
-
         setShowImg(false);
     }
     return (
@@ -94,7 +84,7 @@ const ImageComponent = () => {
             </img>
             <form className={!showImg ? "showimg" : "offscreen"} onSubmit={getScreenshot}>
                 <TextField type="text" onChange={handleChange} placeholder='place url:' />
-                <TextField type="submit" />
+                <TextField value="Submit URL" type="submit" />
                 <span className='url_error'>Error in the url</span>
                 {loading && (
                     <CircularProgress

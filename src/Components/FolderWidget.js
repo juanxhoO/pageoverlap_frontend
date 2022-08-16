@@ -8,7 +8,7 @@ import Searchbar from './Searchbar';
 import Subdirectory from './Subdirectory';
 import { useEffect, useState } from 'react';
 
-const FolderWidget = (props) => {
+const FolderWidget = () => {
     const api_url = process.env.REACT_APP_AXIOS_BASE_URL;
     const [apiResponse, setApiResponse] = useState([]);
     const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -17,7 +17,6 @@ const FolderWidget = (props) => {
     useEffect(() => {
         axios.get(api_url + '/api/directory')
             .then(function (response) {
-                console.log("dsdsd")
                 setApiResponse(response.data);
             })
             .catch(function (error) {
@@ -28,13 +27,12 @@ const FolderWidget = (props) => {
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
-
+        localStorage.setItem("hostname",event.currentTarget.getAttribute('id'));
         let key = event.currentTarget.id
         let url = api_url + '/api/directory/' + key;
-
         axios.get(url)
             .then(function (response) {
-                //                console.log(response.data);
+                //console.log(response.data);
                 setInputList(<Subdirectory data={response.data} key={inputList.length} />);
             })
             .catch(function (error) {

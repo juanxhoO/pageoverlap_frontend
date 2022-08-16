@@ -2,25 +2,24 @@ import './App.css';
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Sidebar from './Components/Sidebar';
-import Directory from './Pages/Directory.js'
 import Homepage from './Pages/Homepage';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import ScreenshotsPage from './Pages/ScreenshotsPage';
 import Screenshot from './Pages/Screenshot';
-
+import Results from './Pages/Results';
 function App() {
 
   return (
     <div className="App">
 
       <Header />
-      
-        <Sidebar />
-      
+
+      <Sidebar />
+
       <Routes>
 
-      <Route
+        <Route
           path="/directory/screenshots/:id"
           element={<Screenshot />}
         />
@@ -31,14 +30,15 @@ function App() {
         />
 
         <Route
+          path="/results"
+          element={<Results />}
+        />
+
+        <Route
           path="/"
           element={<Homepage />}
         />
 
-        <Route
-          path="/directory"
-          element={<Directory />}
-        />
 
       </Routes>
       <Footer />

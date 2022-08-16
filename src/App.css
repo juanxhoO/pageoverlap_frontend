@@ -154,10 +154,13 @@
 }
 
 .ThumbContainer {
-  max-height: 240px;
+  max-height: 300px;
   display: inline-block;
   border: 1px solid #ccc;
-  width: 25%;
+  flex: 0 25%;
+
+  box-sizing: border-box;
+
 }
 
 .Sidebar {
@@ -170,16 +173,36 @@
 }
 
 
-.ThumbContainer img{
-  width: auto;
-    max-height: 240px;
+.ThumbContainer img {
+  max-width: 100%;
+  max-height: 240px;
+  cursor: pointer;
 }
 
-.ScreenshotContainer img{
+.ScreenshotContainer img {
   max-width: 100%;
 }
 
-.ScreenshotContainer{
-  padding: 25px;  
+.ScreenshotContainer {
+  padding: 25px;
 }
 
+.ThumbnailContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.ThumbContainer span {
+  display: inline-block;
+}
+
+.labelThumb {
+  font-weight: bold;
+}
+
+
+.thumbDetails
+{
+  display: block;
+}
