@@ -22,12 +22,12 @@ const FolderWidget = () => {
             .catch(function (error) {
                 console.log(error);
             })
-  
+
     }, [localStorage.getItem('imagehandle')]);
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
-        localStorage.setItem("hostname",event.currentTarget.getAttribute('id'));
+        localStorage.setItem("hostname", event.currentTarget.getAttribute('id'));
         let key = event.currentTarget.id
         let url = api_url + '/api/directory/' + key;
         axios.get(url)
@@ -42,7 +42,7 @@ const FolderWidget = () => {
 
     return (
         <div>
-            <Searchbar/>
+            <Searchbar />
 
             <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                 <List component="nav" aria-label="main folders">
@@ -54,7 +54,7 @@ const FolderWidget = () => {
                                 selected={selectedIndex === index}
                                 onClick={(event) => handleListItemClick(event, index)}
                             >
-                                <ListItemText primary={data.hostname} />
+                                <ListItemText key={index} primary={data.hostname} />
                             </ListItemButton>
                         )
                     })}

@@ -15,9 +15,10 @@ const Subdirectory = (props) => {
     return (
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             <List>
-                {props.data.map((data) => {
+                {props.data.map((data, key) => {
                     return (
                         <ListItemButton
+                            key={key}
                             pathname={data}
                             onClick={handleClickDirectory}
                         >
