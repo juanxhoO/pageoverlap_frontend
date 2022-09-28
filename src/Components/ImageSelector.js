@@ -34,8 +34,6 @@ const ImageSelector = (props) => {
         SetSelectedTile(key);
         console.log(selectedTile);
 
-
-
         // document.querySelector('.tileSelector[value="'+ prevValue.current +'"]').style.backgroundColor = "#ffffff";
         //console.log(document.querySelector('.tileSelector[value="'+ prevValue.current +'"]'));
         event.target.style.backgroundColor = "red";
