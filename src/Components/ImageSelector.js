@@ -14,10 +14,8 @@ const tileStyle = {
 
 const ImageSelector = (props) => {
     const navigate = useNavigate();
-    const { setSlotData } = useContext(DataContext);
-    const [selectedTile, SetSelectedTile] = useState([]);
-
-    const prevValue = useRef();
+    const { slotData,setSlotData } = useContext(DataContext);
+    const [selectedTile, SetSelectedTile] = useState(null);
 
 
     useEffect(() => {
@@ -26,26 +24,14 @@ const ImageSelector = (props) => {
 
     }, [selectedTile]);
 
-    const handleChange = (event, key) => {
-        //setSlotData(props.data);
-        prevValue.current = key;
-        console.log(prevValue.current);
-
+    const handleChange = (event, key) => {     
         SetSelectedTile(key);
-        console.log(selectedTile);
-
-
-
-        // document.querySelector('.tileSelector[value="'+ prevValue.current +'"]').style.backgroundColor = "#ffffff";
-        //console.log(document.querySelector('.tileSelector[value="'+ prevValue.current +'"]'));
-        event.target.style.backgroundColor = "red";
     };
 
     const confirmSlot = () => {
 
         console.log('clicked confirmed');
-        //navigate("/");
-
+        console.log(slotData);
     }
 
     return (
