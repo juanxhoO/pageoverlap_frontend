@@ -1,14 +1,12 @@
 import ImageComponent from '../Components/imageComponent';
 import Button from '@mui/material/Button';
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import DataContext from '../context/DataProvider.js';
 import { useContext } from 'react'
 
 
 function Homepage() {
     const slotData = useContext(DataContext);
-    const usenavigate = useNavigate();
     const overlayImages = (e) => {
         document.querySelector('.App').classList.add("overlay")
     }

@@ -43,10 +43,10 @@ const Screenshot = (props) => {
     const navigate = useNavigate();
     const [apiResponse, setApiResponse] = useState([])
     let screenshotId = useParams();
-    console.log(screenshotId)
+    //console.log(screenshotId)
     useEffect(() => {
         axios.get(api_url + "/api/screenshots/" + screenshotId.id).then(function (response) {
-            console.log(response.data);
+            //console.log(response.data);
             setApiResponse(response.data);
         })
             .catch(function (error) {

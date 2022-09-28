@@ -5,6 +5,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Button } from '@mui/material';
 import React from 'react';
 
+
+const regex_url = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n\?\=]+)/i;
+
+
 const ImageComponent = () => {
 
     const api_url = process.env.REACT_APP_AXIOS_BASE_URL;
@@ -20,7 +24,7 @@ const ImageComponent = () => {
     }
 
     useEffect(() => {
-        setValidUrl(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n\?\=]+)/i.test(url));
+        setValidUrl(regex_url.test(url));
         console.log(validUrl);
     }, [url])
 
@@ -28,7 +32,7 @@ const ImageComponent = () => {
         var result
         var match
 
-        if (match = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n\?\=]+)/i)) {
+        if (match = url.match(regex_url)) {
             result = match[0]
 
             if (match = result.match(/^[^\.]+\.(.+\..+)$/)) {

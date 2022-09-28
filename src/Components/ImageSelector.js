@@ -14,40 +14,53 @@ const tileStyle = {
 
 const ImageSelector = (props) => {
     const navigate = useNavigate();
-    const tileElement = useRef(null);
     const { setSlotData } = useContext(DataContext);
     const [selectedTile, SetSelectedTile] = useState([]);
 
+    const prevValue = useRef();
+
+
     useEffect(() => {
-        console.log("changed");
-        console.log(selectedTile);
+        //prevValue.current = selectedTile;
+
+
     }, [selectedTile]);
 
     const handleChange = (event, key) => {
         //setSlotData(props.data);
+        prevValue.current = key;
+        console.log(prevValue.current);
+
         SetSelectedTile(key);
-        console.log(tileElement.current);
-        tileElement.current.backgroundColor = "#ffffff";
+        console.log(selectedTile);
+
+
+
+        // document.querySelector('.tileSelector[value="'+ prevValue.current +'"]').style.backgroundColor = "#ffffff";
+        //console.log(document.querySelector('.tileSelector[value="'+ prevValue.current +'"]'));
         event.target.style.backgroundColor = "red";
     };
 
     const confirmSlot = () => {
-        navigate("/");
+
+        console.log('clicked confirmed');
+        //navigate("/");
+
     }
 
     return (
         <div>
             <ToggleButtonGroup style={{ display: "block" }} size='large'>
-                <ToggleButton ref={tileElement} onClick={(event, key) => handleChange(event, key)} style={tileStyle} value="1">
+                <ToggleButton className="tileSelector" onClick={(event, key) => handleChange(event, key)} style={tileStyle} value="1">
                     <span>Slot 1 (Primary Image)</span>
                 </ToggleButton>
-                <ToggleButton ref={tileElement} onClick={handleChange} style={tileStyle} value="2">
+                <ToggleButton className="tileSelector" onClick={handleChange} style={tileStyle} value="2">
                     <span>Slot 2</span>
                 </ToggleButton>
-                <ToggleButton ref={tileElement} onClick={handleChange} style={tileStyle} value="3" >
+                <ToggleButton className="tileSelector" onClick={handleChange} style={tileStyle} value="3" >
                     <span>Slot 3</span>
                 </ToggleButton>
-                <ToggleButton ref={tileElement} onClick={handleChange} style={tileStyle} value="4" >
+                <ToggleButton className="tileSelector" onClick={handleChange} style={tileStyle} value="4" >
                     <span>Slot 4</span>
                 </ToggleButton>
 
