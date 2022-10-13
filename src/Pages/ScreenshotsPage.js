@@ -24,10 +24,10 @@ const ScreenshotsPage = () => {
             .catch(function (error) {
                 console.log(error);
             })
-            .then(function () {
-                // always executed
-            });
     }, [localStorage.getItem('pathname')]);
+
+
+
     const handleThumbnail = (event) => {
         console.log(event.currentTarget.id);
         let screenshot_id = event.currentTarget.id;

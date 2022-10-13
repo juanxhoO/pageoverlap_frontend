@@ -18,12 +18,6 @@ function Homepage() {
         document.querySelector('.App').classList.remove("overlay")
     }
 
-
-    useEffect(() => {
-        console.log(slotData);
-    }, []);
-
-
     return (
 
 
@@ -36,10 +30,10 @@ function Homepage() {
             <div className="Maincontainer">
 
                 <div className="ImgComponentContainer">
-                    <ImageComponent onClick={overlayImages}></ImageComponent>
-                    <ImageComponent onClick={overlayImages}></ImageComponent>
-                    <ImageComponent onClick={overlayImages}></ImageComponent>
-                    <ImageComponent onClick={overlayImages}></ImageComponent>
+                    <ImageComponent dataSlot={1} onClick={overlayImages}></ImageComponent>
+                    <ImageComponent dataSlot={2} onClick={overlayImages}></ImageComponent>
+                    <ImageComponent dataSlot={3} onClick={overlayImages}></ImageComponent>
+                    <ImageComponent dataSlot={4} onClick={overlayImages}></ImageComponent>
                 </div>
 
             </div>

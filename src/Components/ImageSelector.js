@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
-import { useState, useContext, useRef } from 'react'
+import { useState, useContext } from 'react'
 import { Button } from '@mui/material';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useNavigate } from 'react-router-dom';
@@ -14,39 +14,55 @@ const tileStyle = {
 
 const ImageSelector = (props) => {
     const navigate = useNavigate();
-    const { slotData,setSlotData } = useContext(DataContext);
+    const { slotData, setSlotData } = useContext(DataContext);
     const [selectedTile, SetSelectedTile] = useState(null);
 
-
-    useEffect(() => {
-        //prevValue.current = selectedTile;
-
-
-    }, [selectedTile]);
-
-    const handleChange = (event, key) => {     
-        SetSelectedTile(key);
-    };
-
     const confirmSlot = () => {
+        let data = props.data;
+        data.position = selectedTile
+        
 
-        console.log('clicked confirmed');
-        console.log(slotData);
+        if (slotData.length <= 0) {
+            console.log("empty array adding eement");
+            setSlotData(slotData => [...slotData, data]);
+        }
+        //updating array with the new element in same position as the previous one
+        else {
+            //Checking if Element Exists
+            if (slotData.some(e => e.position === selectedTile)) {
+                let filteredArray = slotData.filter(item => item.position !== selectedTile);
+                console.log(filteredArray);
+                filteredArray.push(data);
+                setSlotData(filteredArray);
+            }
+            //Adding if not Exists
+            else {
+                if (slotData.length < 4) {
+                    console.log("not match but added");
+                    setSlotData(slotData => [...slotData, data]);
+                }
+            }
+        }
+
+
+        navigate("/");
+
+
     }
 
     return (
         <div>
             <ToggleButtonGroup style={{ display: "block" }} size='large'>
-                <ToggleButton className="tileSelector" onClick={(event, key) => handleChange(event, key)} style={tileStyle} value="1">
+                <ToggleButton className="tileSelector" onClick={(event,key) => SetSelectedTile(key)} style={tileStyle} value={1}>
                     <span>Slot 1 (Primary Image)</span>
                 </ToggleButton>
-                <ToggleButton className="tileSelector" onClick={handleChange} style={tileStyle} value="2">
+                <ToggleButton className="tileSelector" onClick={(event,key) => SetSelectedTile(key)} style={tileStyle} value={2}>
                     <span>Slot 2</span>
                 </ToggleButton>
-                <ToggleButton className="tileSelector" onClick={handleChange} style={tileStyle} value="3" >
+                <ToggleButton className="tileSelector" onClick={(event,key) => SetSelectedTile(key)} style={tileStyle} value={3} >
                     <span>Slot 3</span>
                 </ToggleButton>
-                <ToggleButton className="tileSelector" onClick={handleChange} style={tileStyle} value="4" >
+                <ToggleButton className="tileSelector" onClick={(event,key) => SetSelectedTile(key)} style={tileStyle} value={4} >
                     <span>Slot 4</span>
                 </ToggleButton>
 

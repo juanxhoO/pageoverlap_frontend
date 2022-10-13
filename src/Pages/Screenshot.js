@@ -30,13 +30,10 @@ const style = {
 
 
 const Screenshot = (props) => {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const handleSetImage = () => {
-        console.log("clicked use image");
 
-    }
 
     const api_url = process.env.REACT_APP_AXIOS_BASE_URL;
 

@@ -6,12 +6,18 @@ import ListItemText from '@mui/material/ListItemText';
 import axios from 'axios';
 import Searchbar from './Searchbar';
 import Subdirectory from './Subdirectory';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import DataContext from '../context/DataProvider.js';
+
 
 const FolderWidget = () => {
+
+
+    const {slotData} = useContext(DataContext);
+
     const api_url = process.env.REACT_APP_AXIOS_BASE_URL;
     const [apiResponse, setApiResponse] = useState([]);
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const [selectedIndex, setSelectedIndex] = useState(1);
     const [inputList, setInputList] = useState([]);
 
     useEffect(() => {
@@ -23,7 +29,7 @@ const FolderWidget = () => {
                 console.log(error);
             })
 
-    }, [localStorage.getItem('imagehandle')]);
+    }, [slotData]);
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);

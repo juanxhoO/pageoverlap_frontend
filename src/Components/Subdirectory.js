@@ -13,7 +13,7 @@ const Subdirectory = (props) => {
     }
 
     return (
-        <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <Box sx={{ width: '100%', maxWidth: 360 }}>
             <List>
                 {props.data.map((data, key) => {
                     return (
@@ -22,17 +22,13 @@ const Subdirectory = (props) => {
                             pathname={data}
                             onClick={handleClickDirectory}
                         >
-                            <ListItemText primary={data} />
+                            <ListItemText sx={{wordWrap: "break-word"}}  secondary={data} />
                         </ListItemButton>
                     )
                 })}
             </List>
-
         </Box>
-
-
     );
 }
-
 export default Subdirectory;
 
